@@ -1,0 +1,24 @@
+<configuration>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} %-5level %logger{20} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- גם לקובץ: מה קרה בהרצה האחרונה, לקרוא אחרי שמשהו מוזר קרה. כל הדלקה מתחילה אותו מחדש. -->
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>logs/ai-game.log</file>
+        <append>false</append>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} %-5level %logger{20} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- כל קלט ופלט של הסוכן, מהספרייה llm-agent: לשנות ל-DEBUG -->
+    <logger name="com.aiagent.lib" level="INFO"/>
+
+    <root level="INFO">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="FILE"/>
+    </root>
+</configuration>
